@@ -31,9 +31,9 @@ const Login = () => {
                 required: true,
                 message: '请输入手机号!',
               },
-            ]}>
-            <Input 
-            placeholder='手机号码'/>
+            ]}
+          >
+            <Input placeholder="手机号码" />
           </Item>
           <Item
             name="password"
@@ -42,9 +42,9 @@ const Login = () => {
                 required: true,
                 message: '请输入密码!',
               },
-            ]}>
-            <Input.Password 
-            placeholder='登录密码'/>
+            ]}
+          >
+            <Input.Password placeholder="登录密码" />
           </Item>
           <a className="login-form-forgot" href="">
             Forgot password
@@ -53,10 +53,10 @@ const Login = () => {
             <Button onClick={submit}>登录</Button>
             <SignModal
               render={(click) => <Button onClick={click}>注册</Button>}
-              onOk={() => { }}
+              onOk={() => {}}
             />
           </div>
-          <div>Or</div>
+          <div>---Or---</div>
           <Button>微信账号登录</Button>
         </Form>
       </div>
