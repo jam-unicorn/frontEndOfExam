@@ -1,6 +1,6 @@
 import { login } from '@/domains/login'
 import { navHelper } from '@/core/routes/navHelper'
-import SignModal from './SignModal'
+import InputPhone from '@/features/InputPhone'
 
 const { Item, useForm } = Form
 const Login = () => {
@@ -8,7 +8,6 @@ const Login = () => {
   const navInstance = navHelper()
   const submit = () => {
     formInstance.validateFields().then((params) => {
-      // TODO: 账号密码的预先检查
       login(params)?.then((res) => {
         message.success('登录成功')
         localStorage.setItem('refresh_token', res.data.data.refresh_token)
@@ -24,17 +23,7 @@ const Login = () => {
       <div className="bg-[#fff] w-[400px] h-[400px] rounded-[8px] backdrop-filter-hover flex justify-center items-center flex-col gap-[20px]">
         <h1>登录</h1>
         <Form form={formInstance}>
-          <Item
-            name="account"
-            rules={[
-              {
-                required: true,
-                message: '请输入手机号!',
-              },
-            ]}
-          >
-            <Input placeholder="手机号码" />
-          </Item>
+          <InputPhone />
           <Item
             name="password"
             rules={[
@@ -51,10 +40,7 @@ const Login = () => {
           </a>
           <div className="flex gap-[10px]">
             <Button onClick={submit}>登录</Button>
-            <SignModal
-              render={(click) => <Button onClick={click}>注册</Button>}
-              onOk={() => {}}
-            />
+            <Button>注册</Button>
           </div>
           <div>---Or---</div>
           <Button>微信账号登录</Button>
