@@ -56,6 +56,8 @@ const Login = () => {
               onOk={() => { }}
             />
           </div>
+          <div>Or</div>
+          <Button>微信账号登录</Button>
         </Form>
       </div>
     </div>
