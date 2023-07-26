@@ -24,17 +24,18 @@ const Login = () => {
       <div className="bg-[#fff] w-[400px] h-[400px] rounded-[8px] backdrop-filter-hover flex justify-center items-center flex-col gap-[20px]">
         <h1>登录</h1>
         <Form form={formInstance}>
-          <Item label="账号"
+          <Item
             name="account"
             rules={[
               {
                 required: true,
-                message: '请输入账号!',
+                message: '请输入手机号!',
               },
             ]}>
-            <Input />
+            <Input 
+            placeholder='手机号码'/>
           </Item>
-          <Item label="密码"
+          <Item
             name="password"
             rules={[
               {
@@ -42,7 +43,8 @@ const Login = () => {
                 message: '请输入密码!',
               },
             ]}>
-            <Input.Password />
+            <Input.Password 
+            placeholder='登录密码'/>
           </Item>
           <a className="login-form-forgot" href="">
             Forgot password
