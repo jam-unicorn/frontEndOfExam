@@ -1,9 +1,7 @@
 import { login } from '@/domains/login'
 import { navHelper } from '@/core/routes/navHelper'
-import ShowPassword from '@/features/PasswordVisable'
 import SignModal from './SignModal'
 
-const RULE = [{ required: true }]
 const { Item, useForm } = Form
 const Login = () => {
   const [formInstance] = useForm()
@@ -26,17 +24,34 @@ const Login = () => {
       <div className="bg-[#fff] w-[400px] h-[400px] rounded-[8px] backdrop-filter-hover flex justify-center items-center flex-col gap-[20px]">
         <h1>登录</h1>
         <Form form={formInstance}>
-          <Item label="账号" name="account" rules={RULE}>
+          <Item label="账号"
+            name="account"
+            rules={[
+              {
+                required: true,
+                message: '请输入账号!',
+              },
+            ]}>
             <Input />
           </Item>
-          <Item label="密码" name="password" rules={RULE}>
-            <ShowPassword></ShowPassword>         
+          <Item label="密码"
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: '请输入密码!',
+              },
+            ]}>
+            <Input.Password />
           </Item>
+          <a className="login-form-forgot" href="">
+            Forgot password
+          </a>
           <div className="flex gap-[10px]">
             <Button onClick={submit}>登录</Button>
             <SignModal
               render={(click) => <Button onClick={click}>注册</Button>}
-              onOk={() => {}}
+              onOk={() => { }}
             />
           </div>
         </Form>
