@@ -4,6 +4,7 @@ import InputPhone from '@/features/InputPhone'
 
 const { Item, useForm } = Form
 const Login = () => {
+  const [passwordVisible, setPasswordVisible] = useState(false)
   const [formInstance] = useForm()
   const navInstance = navHelper()
   const submit = () => {
@@ -33,7 +34,19 @@ const Login = () => {
               },
             ]}
           >
-            <Input.Password placeholder="登录密码" />
+            <Input.Password
+              placeholder="登录密码"
+              visibilityToggle={{
+                visible: passwordVisible,
+                onVisibleChange: setPasswordVisible,
+              }}
+              iconRender={(visible) => (visible ? null : null)}
+            />
+            <Switch
+              checkedChildren="123"
+              unCheckedChildren="***"
+              onClick={() => setPasswordVisible((prevState) => !prevState)}
+            />
           </Item>
           <a className="login-form-forgot" href="">
             Forgot password
@@ -42,7 +55,7 @@ const Login = () => {
             <Button onClick={submit}>登录</Button>
             <Button>注册</Button>
           </div>
-          <div>---Or---</div>
+          <Divider>Or</Divider>
           <Button>微信账号登录</Button>
         </Form>
       </div>
