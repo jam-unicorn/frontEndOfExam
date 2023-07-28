@@ -1,16 +1,18 @@
 import Login from '@/pages/Login'
+import Home from '@/pages/home'
 import AuthUrl from './AuthUrl'
 import LayoutIndex from '@/features/LayoutIndex'
 
 export const routers = [
   {
+    path: '/',
+    component: Home,
+    forceAuth: true,
+  },
+  {
     path: '',
     component: () => <LayoutIndex />,
     children: [
-      {
-        path: '/',
-        component: lazy(() => import('@/pages/userManagement/User')),
-      },
       {
         path: '/user/list',
         component: lazy(() => import('@/pages/userManagement/User')),
@@ -69,7 +71,7 @@ export const routers = [
       {
         path: '/examine/commentary',
         component: lazy(() => import('@/pages/examine/Commentary')),
-        forceAuth: true
+        forceAuth: true,
       },
     ],
   },
@@ -91,22 +93,36 @@ export const routers = [
   },
   {
     path: '',
-    component: () => <LayoutIndex/>,
-    children: [{
-      path: '/choice-exam/all-papers',
-      component: lazy(() => import('@/pages/choiceExam/allPapers')),
-      forceAuth: true,
-    }, {
+    component: () => <LayoutIndex />,
+    children: [
+      {
+        path: '/weChat',
+        component: lazy(() => import('@/pages/weChat')),
+        forceAuth: true,
+      },
+    ],
+  },
+  {
+    path: '',
+    component: () => <LayoutIndex />,
+    children: [
+      {
+        path: '/choice-exam/all-papers',
+        component: lazy(() => import('@/pages/choiceExam/allPapers')),
+        forceAuth: true,
+      },
+      {
         path: '/choice-exam/exam-paper',
         component: lazy(() => import('@/pages/choiceExam/examPaper')),
-        forceAuth: true
-    }, {
-      path: '/choice-exam/check-paper',
-      component: lazy(() => import('@/pages/choiceExam/checkPaper')),
-      forceAuth: true
-    }
-    ]
-  }
+        forceAuth: true,
+      },
+      {
+        path: '/choice-exam/check-paper',
+        component: lazy(() => import('@/pages/choiceExam/checkPaper')),
+        forceAuth: true,
+      },
+    ],
+  },
 ]
 
 export const changeRouter = (routers) => {

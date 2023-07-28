@@ -56,7 +56,7 @@ const Login = () => {
             <Button>注册</Button>
           </div>
           <Divider>Or</Divider>
-          <Button>微信账号登录</Button>
+          <Button onClick={navInstance.toWeChat}>微信账号登录</Button>
         </Form>
       </div>
     </div>
