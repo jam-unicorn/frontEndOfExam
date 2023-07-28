@@ -1,9 +1,8 @@
 import { Layout } from 'antd'
 import { Outlet } from 'react-router'
-import FHeader from '../FHeader'
-import SideBar from '../SideBar'
+import BottomBar from '../BottomBar'
 
-const { Content, Sider } = Layout
+const { Content } = Layout
 const LayoutIndex = () => {
   const { rewardStore } = useStores()
   const start = useRef(NUMBER_ZERO)
@@ -25,17 +24,14 @@ const LayoutIndex = () => {
 
   return (
     <Layout className="min-h-[100vh] h-full">
-      <FHeader />
       <Layout className="bg-[#eee]">
-        <Sider>
-          <SideBar />
-        </Sider>
         <Layout>
           <Content className="m-[15px] p-[10px] h-full bg-[#fff] rounded-[8px]">
             <Outlet />
           </Content>
         </Layout>
       </Layout>
+      <BottomBar />
     </Layout>
   )
 }

@@ -5,9 +5,15 @@ import LayoutIndex from '@/features/LayoutIndex'
 
 export const routers = [
   {
-    path: '/',
-    component: Home,
-    forceAuth: true,
+    path: '',
+    component: () => <LayoutIndex />,
+    children: [
+      {
+        path: '/',
+        component: Home,
+        forceAuth: true,
+      },
+    ],
   },
   {
     path: '',
