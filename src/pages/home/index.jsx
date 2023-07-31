@@ -11,7 +11,7 @@ const contentStyle = {
 const Home = () => {
   const navInstance = navHelper()
   return (
-    <div>
+    <>
       <div className="head">
         <h1>首页</h1>
         <Button onClick={navInstance.toLogin}>登录</Button>
@@ -37,7 +37,7 @@ const Home = () => {
         <Button>更多</Button>
       </div>
       <div className="buttom"></div>
-    </div>
+    </>
   )
 }
 
