@@ -1,17 +1,13 @@
-import { exerciseKey, exerciseStore } from '@/domains/exercise/store'
-import { interviewKey, interviewStore } from '@/domains/interview/store'
-import { permissionKey, permissionStore } from '@/domains/permission/store'
-import { rewardStore, rewardStoreKey } from '@/domains/reward/store'
-import { roleStore, roleStoreKey } from '@/domains/role/store'
 import { createContext, useContext } from 'react'
-
+import {
+  permissionStore,
+  permissionKey,
+} from '@/domains/permission/store/index'
+import { roleStore, roleStoreKey } from '@/domains/role/store/index'
 function createStores() {
   return {
     [permissionKey]: permissionStore,
     [roleStoreKey]: roleStore,
-    [exerciseKey]: exerciseStore,
-    [interviewKey]: interviewStore,
-    [rewardStoreKey]: rewardStore,
   }
 }
 

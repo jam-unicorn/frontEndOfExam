@@ -1,7 +1,5 @@
 import Login from '@/pages/Login'
-import Home from '@/pages/home'
 import AuthUrl from './AuthUrl'
-import LayoutIndex from '@/features/LayoutIndex'
 
 export const routers = [
   {
@@ -10,15 +8,8 @@ export const routers = [
     children: [
       {
         path: '/',
-        component: Home,
-        forceAuth: true,
+        component: lazy(() => import('@/pages/userManagement/User')),
       },
-    ],
-  },
-  {
-    path: '',
-    component: () => <LayoutIndex />,
-    children: [
       {
         path: '/user/list',
         component: lazy(() => import('@/pages/userManagement/User')),
@@ -26,47 +17,6 @@ export const routers = [
       {
         path: '/role/list',
         component: lazy(() => import('@/pages/userManagement/Role')),
-      },
-      {
-        path: '/permission/list',
-        component: lazy(() => import('@/pages/userManagement/Permission')),
-        forceAuth: true,
-      },
-    ],
-  },
-  {
-    path: '',
-    component: () => <LayoutIndex />,
-    children: [
-      {
-        path: '/interview/exercise',
-        component: lazy(() => import('@/pages/aboutInterview/Exercise')),
-        forceAuth: true,
-      },
-      {
-        path: '/interview/reversing',
-        component: lazy(() => import('@/pages/aboutInterview/Reversing')),
-        forceAuth: true,
-      },
-      {
-        path: '/interview/record',
-        component: lazy(() => import('@/pages/aboutInterview/Record')),
-        forceAuth: true,
-      },
-      {
-        path: '/interview/:id',
-        component: lazy(() => import('@/pages/aboutInterview/Interview')),
-        forceAuth: true,
-      },
-    ],
-  },
-  {
-    path: '',
-    component: () => <LayoutIndex />,
-    children: [
-      {
-        path: '/my-zone',
-        component: lazy(() => import('@/pages/MyZone')),
       },
     ],
   },
@@ -77,7 +27,6 @@ export const routers = [
       {
         path: '/examine/commentary',
         component: lazy(() => import('@/pages/examine/Commentary')),
-        forceAuth: true,
       },
     ],
   },
@@ -97,38 +46,6 @@ export const routers = [
       },
     ],
   },
-  {
-    path: '',
-    component: () => <LayoutIndex />,
-    children: [
-      {
-        path: '/weChat',
-        component: lazy(() => import('@/pages/weChat')),
-        forceAuth: true,
-      },
-    ],
-  },
-  {
-    path: '',
-    component: () => <LayoutIndex />,
-    children: [
-      {
-        path: '/choice-exam/all-papers',
-        component: lazy(() => import('@/pages/choiceExam/allPapers')),
-        forceAuth: true,
-      },
-      {
-        path: '/choice-exam/exam-paper',
-        component: lazy(() => import('@/pages/choiceExam/examPaper')),
-        forceAuth: true,
-      },
-      {
-        path: '/choice-exam/check-paper',
-        component: lazy(() => import('@/pages/choiceExam/checkPaper')),
-        forceAuth: true,
-      },
-    ],
-  },
 ]
 
 export const changeRouter = (routers) => {
@@ -141,22 +58,17 @@ export const changeRouter = (routers) => {
         </Suspense>
       )
     } else {
-      route.element =
-        route.path === '/login' ? (
-          <Suspense>
+      route.element = (
+        <Suspense>
+          <AuthUrl
+            forceAuth={
+              !import.meta.env.VITE_NEED_ROUTE_CHECK || route.forceAuth
+            }
+          >
             <route.component />
-          </Suspense>
-        ) : (
-          <Suspense>
-            <AuthUrl
-              forceAuth={
-                !import.meta.env.VITE_NEED_ROUTE_CHECK || route.forceAuth
-              }
-            >
-              <route.component />
-            </AuthUrl>
-          </Suspense>
-        )
+          </AuthUrl>
+        </Suspense>
+      )
     }
     return route
   })

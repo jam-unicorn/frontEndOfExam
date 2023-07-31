@@ -1,4 +1,7 @@
-import { createRole, getRoleList } from '@/domains/role/repository'
+import {
+  createRole,
+  getRoleList,
+} from '@/domains/role/repository/index.repository'
 import FormHeader from '@/shared/FormHeader'
 import getTableData from '@/utils/tableApi'
 import { PlusOutlined } from '@ant-design/icons'

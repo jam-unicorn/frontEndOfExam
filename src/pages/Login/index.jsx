@@ -25,27 +25,13 @@ const Login = () => {
         <h1>登录</h1>
         <Form form={formInstance}>
           <InputPhone />
-          <Item
-            name="password"
-            rules={[
-              {
-                required: true,
-                message: '请输入密码!',
-              },
-            ]}
-          >
+          <Item name="password">
             <Input.Password
               placeholder="登录密码"
               visibilityToggle={{
                 visible: passwordVisible,
                 onVisibleChange: setPasswordVisible,
               }}
-              iconRender={(visible) => (visible ? null : null)}
-            />
-            <Switch
-              checkedChildren="123"
-              unCheckedChildren="***"
-              onClick={() => setPasswordVisible((prevState) => !prevState)}
             />
           </Item>
           <a className="login-form-forgot" href="">

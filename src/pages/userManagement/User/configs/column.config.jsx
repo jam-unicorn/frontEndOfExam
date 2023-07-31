@@ -1,4 +1,8 @@
-import { deleteUser, updateUser, setActivation } from '@/domains/user'
+import {
+  deleteUser,
+  updateUser,
+  setActivation,
+} from '@/domains/user/index.repository'
 import PermissionWrapper from '@/features/PermissionWrapper'
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons'
 import DeleteModal from '../components/DeleteModal'

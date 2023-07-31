@@ -1,6 +1,5 @@
 import react from '@vitejs/plugin-react'
-import fs from 'fs'
-import path, { resolve } from 'path'
+import { resolve } from 'path'
 import autoImport from 'unplugin-auto-import/vite'
 import { defineConfig } from 'vite'
 
@@ -66,15 +65,6 @@ export default defineConfig({
             'patch',
           ],
         },
-        {
-          '@/core/services/interviewAxios.js': [
-            'interGet',
-            'interPost',
-            'interPatch',
-            'interDeleted',
-            'interPut',
-          ],
-        },
         { '@/features/FHeader': [['default', 'FHeader']] },
         { '@/features/LayoutIndex': [['default', 'LayoutIndex']] },
         { '@/shared/Question': [['default', 'Question']] },
@@ -84,8 +74,6 @@ export default defineConfig({
             'NO_FOUND_INDEX',
             'NUMBER_ZERO',
             'BACKEND_STATUS',
-            'ROLE_TYPE',
-            'TWO_HUNDRED',
           ],
         },
       ],
@@ -141,11 +129,5 @@ export default defineConfig({
         replacement: '',
       },
     ],
-  },
-  server: {
-    https: {
-      cert: fs.readFileSync(path.join(__dirname, 'security/httpsSSL/cert.crt')),
-      key: fs.readFileSync(path.join(__dirname, 'security/httpsSSL/cert.key')),
-    },
   },
 })

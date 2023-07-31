@@ -1,7 +1,4 @@
-import Crypto from '@/utils/crypto'
 import axios from 'axios'
-import keyStore from '../tokenStore'
-
 const axiosInstance = axios.create({
   baseURL: `${import.meta.env.VITE_BASEURL}/api`,
   timeout: 30000,
@@ -32,19 +29,6 @@ export const tokenJudgeConfig = (instance) => {
           return config
         }
       }
-    },
-    (error) => new Error(error)
-  )
-}
-
-export const deCryptoGram = (instance) => {
-  instance?.interceptors.response.use(
-    (config) => {
-      const data = JSON.parse(
-        Crypto.decryptByAES(config.data, keyStore.shift())
-      )
-      config.data = data
-      return config
     },
     (error) => new Error(error)
   )

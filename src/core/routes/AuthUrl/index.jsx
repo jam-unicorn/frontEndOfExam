@@ -5,7 +5,7 @@ const AuthUrl = ({ forceAuth = false, children }) => {
   const location = useLocation()
   const navInstance = navHelper()
   const { permissionStore } = useStores()
-  permissionStore.isGettenList || permissionStore.getPermissionList()
+  permissionStore.getPermissionList()
   if (location.pathname === '/') {
     navInstance.toUserList()
   }

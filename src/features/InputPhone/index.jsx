@@ -4,6 +4,7 @@ export default function InputPhone() {
   const { Item } = Form
   return (
     <Item
+      label="账号"
       name="account"
       rules={[
         ({ getFieldValue }) => ({
