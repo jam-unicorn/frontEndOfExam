@@ -13,7 +13,7 @@ const Register = () => {
   const sendVerificationCode = () => {
     // TODO: 实现发送验证码的逻辑
     setIsSendingCode(true); // 设置发送状态为 true
-    // 模拟发送验证码的异步操作
+   
     setTimeout(() => {
       setIsSendingCode(false); // 设置发送状态为 false
       message.success('验证码已发送');
