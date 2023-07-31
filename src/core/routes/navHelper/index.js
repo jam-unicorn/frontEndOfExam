@@ -1,11 +1,13 @@
 export const navHelper = () => {
   const navigate = useNavigate()
   return {
-    toRegister: () => navigate('/Register'),
     toLogin: () => navigate('/login'),
+    toRegister: () => navigate('/Register'),
     toUserList: () => navigate('/user/list'),
     toRoleList: () => navigate('/role/list'),
     toPage403: () => navigate('/auth/403'),
     toInterview: (_id) => navigate(`/interview/${_id}`),
+    toWeChat: () => navigate('/weChat'),
+    toHome: () => navigate('/home'),
   }
 }
