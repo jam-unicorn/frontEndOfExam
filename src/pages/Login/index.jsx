@@ -25,15 +25,31 @@ const Login = () => {
         <h1>登录</h1>
         <Form form={formInstance}>
           <InputPhone />
-          <Item name="password">
-            <Input.Password
-              placeholder="登录密码"
-              visibilityToggle={{
-                visible: passwordVisible,
-                onVisibleChange: setPasswordVisible,
-              }}
+          <div>
+            <Item
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: '请输入密码!',
+                },
+              ]}
+            >
+              <Input.Password
+                placeholder="登录密码"
+                visibilityToggle={{
+                  visible: passwordVisible,
+                  onVisibleChange: setPasswordVisible,
+                }}
+                iconRender={(visible) => (visible ? '' : '')}
+              />
+            </Item>
+            <Switch
+              checkedChildren="123"
+              unCheckedChildren="***"
+              onClick={() => setPasswordVisible((prevState) => !prevState)}
             />
-          </Item>
+          </div>
           <a className="login-form-forgot" href="">
             Forgot password
           </a>
@@ -42,7 +58,7 @@ const Login = () => {
             <Button>注册</Button>
           </div>
           <Divider>Or</Divider>
-          <Button onClick={navInstance.toWeChat}>微信账号登录</Button>
+          <Button onClick={navInstance.toChoosCity}>微信账号登录</Button>
         </Form>
       </div>
     </div>

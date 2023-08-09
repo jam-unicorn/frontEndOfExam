@@ -31,10 +31,15 @@ const Home = () => {
         </div>
       </Carousel>
       <div className="interviewNav">
+        <h2>公务员面试</h2>
         <Button>更多</Button>
+        <Button>结构化面试</Button>
+        <Button>无领导小组讨论</Button>
       </div>
       <div className="interviewExample">
+        <h2>面试示例</h2>
         <Button>更多</Button>
+        <div></div>
       </div>
       <div className="buttom"></div>
     </>

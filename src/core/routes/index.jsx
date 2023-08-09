@@ -4,12 +4,35 @@ import AuthUrl from './AuthUrl'
 export const routers = [
   {
     path: '',
-    component: () => <LayoutIndex />,
+    component: () => <Login />,
     children: [
       {
         path: '/',
-        component: lazy(() => import('@/pages/userManagement/User')),
+        component: () => <Login />,
+        forceAuth: true,
       },
+      {
+        path: '/login',
+        component: () => <Login />,
+        forceAuth: true,
+      },
+    ],
+  },
+  {
+    path: '',
+    component: () => <LayoutIndex />,
+    children: [
+      {
+        path: '/home',
+        component: lazy(() => import('@/pages/home')),
+        forceAuth: true,
+      },
+    ],
+  },
+  {
+    path: '',
+    component: () => <LayoutIndex />,
+    children: [
       {
         path: '/user/list',
         component: lazy(() => import('@/pages/userManagement/User')),
@@ -31,11 +54,6 @@ export const routers = [
     ],
   },
   {
-    path: '/login',
-    component: () => <Login />,
-    forceAuth: true,
-  },
-  {
     path: '',
     component: () => <LayoutIndex />,
     children: [
@@ -45,6 +63,11 @@ export const routers = [
         forceAuth: true,
       },
     ],
+  },
+  {
+    path: '/chooseCity',
+    component: lazy(() => import('@/pages/chooseCity')),
+    forceAuth: true,
   },
 ]
 
