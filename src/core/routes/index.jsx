@@ -69,6 +69,11 @@ export const routers = [
     component: lazy(() => import('@/pages/chooseCity')),
     forceAuth: true,
   },
+  {
+    path: '/weCHat',
+    component: lazy(() => import('@/pages/weChat')),
+    forceAuth: true,
+  },
 ]
 
 export const changeRouter = (routers) => {

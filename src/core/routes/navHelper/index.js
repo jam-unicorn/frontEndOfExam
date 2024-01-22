@@ -7,5 +7,6 @@ export const navHelper = () => {
     toPage403: () => navigate('/auth/403'),
     toHome: () => navigate('/home'),
     toChoosCity: () => navigate('/chooseCity'),
+    toWeChat: () => navigate('/weChat'),
   }
 }

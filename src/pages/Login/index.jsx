@@ -1,10 +1,14 @@
 import { login } from '@/domains/login'
 import { navHelper } from '@/core/routes/navHelper'
 import InputPhone from '@/features/InputPhone'
+import InputPassword from '@/features/InputPassword'
+import UserProtocol from '@/pages/Login/UserProtocol'
+import './index.scss'
+import '../../styles/style.css'
+import '../../styles/axure_rp_page.css'
 
-const { Item, useForm } = Form
+const { useForm } = Form
 const Login = () => {
-  const [passwordVisible, setPasswordVisible] = useState(false)
   const [formInstance] = useForm()
   const navInstance = navHelper()
   const submit = () => {
@@ -20,46 +24,62 @@ const Login = () => {
   }
 
   return (
-    <div className="h-[100vh] bg-gradient-to-r from-blue-400 to-green-500 flex justify-center items-center">
-      <div className="bg-[#fff] w-[400px] h-[400px] rounded-[8px] backdrop-filter-hover flex justify-center items-center flex-col gap-[20px]">
-        <h1>登录</h1>
-        <Form form={formInstance}>
-          <InputPhone />
-          <div>
-            <Item
-              name="password"
-              rules={[
-                {
-                  required: true,
-                  message: '请输入密码!',
-                },
-              ]}
+    <div>
+      <div id="base">
+        <div className="company_icon">
+          <img className="img" src="images/登录页面/u41.png"></img>
+          <div className="text">无象公考</div>
+        </div>
+        <div className="box">
+          <Form form={formInstance}>
+            <div className="phone_number">
+              <img className="img" src="images/登录页面/u18.svg" />
+              <div className="input_box">
+                <InputPhone />
+              </div>
+            </div>
+
+            <div className="password">
+              <img className="img " src="images/登录页面/u17.svg" />
+              <div className="input_box">
+                <InputPassword />
+              </div>
+            </div>
+            <div className="forget_password">
+              <a href="">忘记密码</a>
+            </div>
+
+            <div className="protocol">
+              <UserProtocol />
+            </div>
+          </Form>
+          <div className="login">
+            <img className="img " src="images/登录页面/u19.svg" />
+            <Button className="button" onClick={submit} shape="round">
+              登录
+            </Button>
+          </div>
+
+          <div className="sign_up">
+            <Button className="button" shape="round">
+              注册账号
+            </Button>
+          </div>
+
+          <div className="divider">
+            <Divider>OR</Divider>
+          </div>
+          <div className="weChat">
+            <img className="img " src="images/登录页面/u16.svg" />
+            <Button
+              className="button"
+              onClick={navInstance.toWeChat}
+              shape="round"
             >
-              <Input.Password
-                placeholder="登录密码"
-                visibilityToggle={{
-                  visible: passwordVisible,
-                  onVisibleChange: setPasswordVisible,
-                }}
-                iconRender={(visible) => (visible ? '' : '')}
-              />
-            </Item>
-            <Switch
-              checkedChildren="123"
-              unCheckedChildren="***"
-              onClick={() => setPasswordVisible((prevState) => !prevState)}
-            />
+              微信账号登录
+            </Button>
           </div>
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>
-          <div className="flex gap-[10px]">
-            <Button onClick={submit}>登录</Button>
-            <Button>注册</Button>
-          </div>
-          <Divider>Or</Divider>
-          <Button onClick={navInstance.toChoosCity}>微信账号登录</Button>
-        </Form>
+        </div>
       </div>
     </div>
   )
