@@ -70,7 +70,7 @@ export const routers = [
     forceAuth: true,
   },
   {
-    path: '/weCHat',
+    path: '/weChat',
     component: lazy(() => import('@/pages/weChat')),
     forceAuth: true,
   },

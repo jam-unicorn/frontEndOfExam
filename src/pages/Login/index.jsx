@@ -3,9 +3,8 @@ import { navHelper } from '@/core/routes/navHelper'
 import InputPhone from '@/features/InputPhone'
 import InputPassword from '@/features/InputPassword'
 import UserProtocol from '@/pages/Login/UserProtocol'
-import './index.scss'
-import '../../styles/style.css'
-import '../../styles/axure_rp_page.css'
+import '@/pages/Login/index.scss'
+import { ConfigProvider } from 'antd'
 
 const { useForm } = Form
 const Login = () => {
@@ -38,7 +37,7 @@ const Login = () => {
                 <InputPhone />
               </div>
             </div>
-
+            <br />
             <div className="password">
               <img className="img " src="images/登录页面/u17.svg" />
               <div className="input_box">
@@ -53,19 +52,20 @@ const Login = () => {
               <UserProtocol />
             </div>
           </Form>
-          <div className="login">
-            <img className="img " src="images/登录页面/u19.svg" />
-            <Button className="button" onClick={submit} shape="round">
-              登录
-            </Button>
-          </div>
-
-          <div className="sign_up">
-            <Button className="button" shape="round">
-              注册账号
-            </Button>
-          </div>
-
+          <ConfigProvider theme={{ token: { colorPrimary: 'transparent' } }}>
+            <div className="login">
+              <img className="img " src="images/登录页面/u19.svg" />
+              <Button className="button" onClick={submit} shape="round">
+                登录
+              </Button>
+            </div>
+            <br />
+            <div className="sign_up">
+              <Button className="button" shape="round">
+                注册账号
+              </Button>
+            </div>
+          </ConfigProvider>
           <div className="divider">
             <Divider>OR</Divider>
           </div>
@@ -73,7 +73,7 @@ const Login = () => {
             <img className="img " src="images/登录页面/u16.svg" />
             <Button
               className="button"
-              onClick={navInstance.toWeChat}
+              onClick={navInstance.toUserList}
               shape="round"
             >
               微信账号登录
